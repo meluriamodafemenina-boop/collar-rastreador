@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="Localizador para mascotas. Ubica a tu perro o gato desde tu celular. Oferta especial $79.900.">
+<title>Localizador GPS para Mascotas | Importadora El Rebajón</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">🐾 OFERTA ESPECIAL · $79.900 · ENVÍOS A TODA COLOMBIA</div>
+<header class="header"><img src="assets/logo.png" alt="Importadora El Rebajón"></header>
+<main>
+<section class="product-wrap">
+  <div class="gallery">
+    <button class="main-photo" id="openGallery" type="button" aria-label="Ampliar imagen">
+      <img id="mainPhoto" src="assets/foto-1.jpeg" alt="Localizador para mascotas">
+      <span class="zoom">⤢</span>
+    </button>
+    <div class="thumbs" aria-label="Galería del producto">
+      <button class="thumb active" data-src="assets/foto-1.jpeg"><img src="assets/foto-1.jpeg" alt="Vista del collar"></button>
+      <button class="thumb" data-src="assets/foto-2.jpeg"><img src="assets/foto-2.jpeg" alt="Tecnología y ubicación"></button>
+      <button class="thumb" data-src="assets/foto-3.jpeg"><img src="assets/foto-3.jpeg" alt="Funciones del localizador"></button>
+      <button class="thumb" data-src="assets/foto-4.jpeg"><img src="assets/foto-4.jpeg" alt="Oferta del localizador"></button>
+    </div>
+  </div>
+  <div class="details">
+    <div class="pill">OFERTA ESPECIAL</div>
+    <h1>Localizador para Mascotas</h1>
+    <p class="headline">La tranquilidad de saber dónde está tu mascota cuando más lo necesitas.</p>
+    <div class="price"><strong>$79.900</strong> <span>COP</span></div>
+    <div class="before">Antes <s>$120.000</s></div>
+    <div class="saving">AHORRAS $20.100</div>
+    <div class="actions">
+      <a class="btn orange" href="#pedido">HACER PEDIDO</a>
+      <a class="btn whatsapp" id="waTop" target="_blank" rel="noopener">PEDIR POR WHATSAPP</a>
+    </div>
+    <div class="trust"><span>🚚 Envíos a toda Colombia</span><span>💵 Pago contra entrega*</span></div>
+    <p class="fine">*Pago contra entrega sujeto a cobertura y condiciones del transportador.</p>
+  </div>
+</section>
+
+<section class="description">
+  <div class="section-label">¿POR QUÉ LO NECESITAS?</div>
+  <h2>No esperes a que tu mascota se pierda para preocuparte.</h2>
+  <p>Los perros y gatos pueden salir corriendo, escaparse por una puerta o alejarse más de lo esperado. Este localizador está pensado para ayudarte a <b>mantenerla ubicada desde tu celular</b> y tener mayor tranquilidad cuando sale de casa.</p>
+  <p>Consulta su ubicación, revisa sus movimientos y ten una herramienta práctica para reaccionar más rápido si tu mascota se aleja.</p>
+</section>
+
+<section class="benefits">
+  <div class="section-label">BENEFICIOS</div>
+  <h2>Más tranquilidad para ti. Más seguridad para ella.</h2>
+  <div class="benefit-grid">
+    <article><div class="icon">📍</div><h3>Ubicación en tiempo real</h3><p>Consulta dónde se encuentra tu mascota desde tu celular cuando la función de localización esté activa.</p></article>
+    <article><div class="icon">🔋</div><h3>Hasta 6 días de batería</h3><p>Diseñado para acompañar a tu mascota durante varios días sin estar pendiente de cargarlo constantemente.</p></article>
+    <article><div class="icon">🐾</div><h3>Cómodo para tu mascota</h3><p>Diseño ligero y ajustable para usarlo a diario sin incomodarla.</p></article>
+    <article><div class="icon">💧</div><h3>Resistente al agua</h3><p>Preparado para el uso cotidiano y situaciones como lluvia o salpicaduras, según las condiciones del producto.</p></article>
+  </div>
+</section>
+
+<section class="how">
+  <div class="section-label">FÁCIL DE USAR</div>
+  <h2>Ten a tu mascota más cerca, incluso cuando no la ves.</h2>
+  <div class="steps"><div><b>01</b><span>Coloca el localizador en el collar.</span></div><div><b>02</b><span>Conéctalo y configura la función de ubicación.</span></div><div><b>03</b><span>Consulta su ubicación desde tu celular.</span></div></div>
+</section>
+
+<section class="offer">
+  <div class="section-label">PRECIO ESPECIAL</div>
+  <h2>Protege esa compañía que tanto quieres.</h2>
+  <div class="offer-price">$79.900 <small>COP</small></div>
+  <div class="offer-before">Antes <s>$120.000</s></div>
+  <a class="btn orange" href="#pedido">HACER PEDIDO</a>
+  <p>🚚 Envíos a toda Colombia · 💵 Pago contra entrega*</p>
+</section>
+
+<section class="order" id="pedido">
+  <div class="order-card">
+    <div class="section-label">HAZ TU PEDIDO</div>
+    <h2>Recibe tu localizador en casa</h2>
+    <p class="sub">Déjanos tus datos y te contactaremos para confirmar el pedido y la cobertura del envío.</p>
+    <form id="orderForm">
+      <div class="form-grid">
+        <label>Nombre completo<input name="nombre" required autocomplete="name" placeholder="Tu nombre"></label>
+        <label>Teléfono<input name="telefono" required inputmode="tel" autocomplete="tel" placeholder="300 000 0000"></label>
+        <label>Ciudad<input name="ciudad" required placeholder="Tu ciudad"></label>
+        <label>Barrio<input name="barrio" required placeholder="Tu barrio"></label>
+        <label class="full">Dirección<input name="direccion" required autocomplete="street-address" placeholder="Dirección de entrega"></label>
+        <label>Cantidad<select name="cantidad"><option value="1">1 unidad — $79.900</option><option value="2">2 unidades — $159.800</option><option value="3">3 unidades — $239.700</option></select></label>
+        <label class="full">Observaciones<textarea name="observaciones" rows="3" placeholder="Información adicional (opcional)"></textarea></label>
+      </div>
+      <div class="payment"><b>💵 Pago contra entrega</b><span>Sujeto a cobertura del transportador.</span></div>
+      <button class="btn orange submit" type="submit">CONFIRMAR PEDIDO</button>
+      <div id="formMessage" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+</main>
+<footer><img src="assets/logo.png" alt="El Rebajón"><div><strong>IMPORTADORA EL REBAJÓN</strong><small>Precios bajos, grandes beneficios · © 2026</small></div></footer>
+<div class="lightbox" id="lightbox" aria-hidden="true"><button id="closeGallery" type="button" aria-label="Cerrar">×</button><img id="zoomPhoto" src="" alt="Imagen ampliada"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
