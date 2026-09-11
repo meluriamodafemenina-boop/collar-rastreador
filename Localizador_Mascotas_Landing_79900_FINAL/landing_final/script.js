@@ -1,6 +1,10 @@
 const PRICE = 79900;
 const WA_NUMBER = "573147636825";
 
+// ===============================
+// GALERÍA
+// ===============================
+
 const mainPhoto = document.getElementById("mainPhoto");
 const thumbs = [...document.querySelectorAll(".thumb")];
 
@@ -34,6 +38,11 @@ function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
 }
 
+
+// ===============================
+// WHATSAPP
+// ===============================
+
 const waText = encodeURIComponent(
   "Hola, estoy interesado(a) en el Localizador para Mascotas de $79.900. Quiero hacer un pedido."
 );
@@ -41,15 +50,24 @@ const waText = encodeURIComponent(
 document.getElementById("waTop").href =
   `https://wa.me/${WA_NUMBER}?text=${waText}`;
 
+
+// ===============================
+// FORMULARIO
+// ===============================
+
 const form = document.getElementById("orderForm");
 const msg = document.getElementById("formMessage");
 
 form.addEventListener("submit", async e => {
+
   e.preventDefault();
 
+  msg.style.color = "";
   msg.textContent = "Registrando pedido...";
 
-  const raw = Object.fromEntries(new FormData(form).entries());
+  const raw = Object.fromEntries(
+    new FormData(form).entries()
+  );
 
   const nombre = (raw.nombre || "").trim();
   const telefono = (raw.telefono || "").trim();
@@ -73,19 +91,37 @@ form.addEventListener("submit", async e => {
     estado: "Pendiente"
   };
 
-  try {
-    const { data: insertedData, error } =
-      await window.supabaseClient
-        .from(window.SUPABASE_TABLE)
-        .insert([data])
-        .select();
+  console.log("DATOS QUE SE ENVIARÁN A SUPABASE:");
+  console.log(data);
 
-    if (error) {
-      console.error("Error de Supabase:", error);
-      throw error;
+  try {
+
+    const resultado = await window.supabaseClient
+      .from(window.SUPABASE_TABLE)
+      .insert([data])
+      .select();
+
+    console.log("RESPUESTA COMPLETA DE SUPABASE:");
+    console.log(resultado);
+
+    if (resultado.error) {
+
+      console.error("ERROR DE SUPABASE:");
+      console.error(resultado.error);
+
+      msg.innerHTML = `
+        <strong>⚠️ ERROR DE SUPABASE</strong><br><br>
+        ${resultado.error.message || "Error desconocido"}<br><br>
+        <small>
+        Código: ${resultado.error.code || "No disponible"}
+        </small>
+      `;
+
+      return;
     }
 
-    console.log("Pedido registrado:", insertedData);
+    console.log("PEDIDO REGISTRADO CORRECTAMENTE:");
+    console.log(resultado.data);
 
     msg.textContent =
       "¡Pedido registrado correctamente! Te contactaremos para confirmar. 🐾";
@@ -93,9 +129,14 @@ form.addEventListener("submit", async e => {
     form.reset();
 
   } catch (err) {
-    console.error("No se pudo registrar el pedido:", err);
 
-    msg.textContent =
-      "No pudimos registrar el pedido. Puedes pedirlo directamente por WhatsApp.";
+    console.error("ERROR COMPLETO:");
+    console.error(err);
+
+    msg.innerHTML = `
+      <strong>⚠️ ERROR</strong><br><br>
+      ${err.message || err}
+    `;
   }
+
 });
