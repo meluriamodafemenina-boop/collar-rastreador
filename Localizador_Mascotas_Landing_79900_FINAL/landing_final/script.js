@@ -5,14 +5,59 @@ const WA_NUMBER = "573147636825";
 // GALERÍA DE IMÁGENES
 // ===============================
 
-const galleryImages = document.querySelectorAll(".gallery img");
-const mainImage = document.getElementById("mainImage");
+const mainPhoto = document.getElementById("mainPhoto");
+const thumbnails = document.querySelectorAll(".thumb");
 
-if (galleryImages.length && mainImage) {
-  galleryImages.forEach(img => {
-    img.addEventListener("click", () => {
-      mainImage.src = img.src;
+thumbnails.forEach(thumb => {
+  thumb.addEventListener("click", () => {
+    const src = thumb.dataset.src;
+
+    if (mainPhoto && src) {
+      mainPhoto.src = src;
+    }
+
+    thumbnails.forEach(item => {
+      item.classList.remove("active");
     });
+
+    thumb.classList.add("active");
+  });
+});
+
+
+// ===============================
+// GALERÍA AMPLIADA / LIGHTBOX
+// ===============================
+
+const openGallery = document.getElementById("openGallery");
+const lightbox = document.getElementById("lightbox");
+const zoomPhoto = document.getElementById("zoomPhoto");
+const closeGallery = document.getElementById("closeGallery");
+
+if (openGallery && lightbox && zoomPhoto && mainPhoto) {
+  openGallery.addEventListener("click", () => {
+    zoomPhoto.src = mainPhoto.src;
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+  });
+}
+
+function closeLightbox() {
+  if (lightbox) {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+  }
+}
+
+if (closeGallery) {
+  closeGallery.addEventListener("click", closeLightbox);
+}
+
+if (lightbox) {
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
   });
 }
 
@@ -21,20 +66,15 @@ if (galleryImages.length && mainImage) {
 // WHATSAPP
 // ===============================
 
-const whatsappButtons = document.querySelectorAll("[data-whatsapp]");
+const waTop = document.getElementById("waTop");
 
-whatsappButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const message = encodeURIComponent(
-      "Hola, estoy interesado en el Localizador para Mascotas AirTag Pet."
-    );
+if (waTop) {
+  const message = encodeURIComponent(
+    "Hola, estoy interesado en el Localizador para Mascotas AirTag Pet."
+  );
 
-    window.open(
-      `https://wa.me/${WA_NUMBER}?text=${message}`,
-      "_blank"
-    );
-  });
-});
+  waTop.href = `https://wa.me/${WA_NUMBER}?text=${message}`;
+}
 
 
 // ===============================
@@ -42,18 +82,25 @@ whatsappButtons.forEach(button => {
 // ===============================
 
 const orderModal = document.getElementById("orderModal");
-const openOrderButtons = document.querySelectorAll("[data-open-order]");
+const openOrderButtons = document.querySelectorAll(".order-trigger");
 const closeOrderButton = document.getElementById("closeOrder");
+const orderOverlay = document.getElementById("orderOverlay");
 
-function openOrderModal() {
+function openOrderModal(e) {
+  if (e) {
+    e.preventDefault();
+  }
+
   if (orderModal) {
     orderModal.classList.add("active");
+    orderModal.setAttribute("aria-hidden", "false");
   }
 }
 
 function closeOrderModal() {
   if (orderModal) {
     orderModal.classList.remove("active");
+    orderModal.setAttribute("aria-hidden", "true");
   }
 }
 
@@ -65,12 +112,8 @@ if (closeOrderButton) {
   closeOrderButton.addEventListener("click", closeOrderModal);
 }
 
-if (orderModal) {
-  orderModal.addEventListener("click", e => {
-    if (e.target === orderModal) {
-      closeOrderModal();
-    }
-  });
+if (orderOverlay) {
+  orderOverlay.addEventListener("click", closeOrderModal);
 }
 
 
@@ -118,15 +161,9 @@ if (form) {
     console.log("DATOS ENVIADOS A SUPABASE:", data);
 
     try {
-
-      // IMPORTANTE:
-      // Se elimina .select() para evitar que el navegador
-      // necesite permiso SELECT después de crear el pedido.
-
-      const { data: pedido, error } =
-        await window.supabaseClient
-          .from(window.SUPABASE_TABLE)
-          .insert([data]);
+      const { error } = await window.supabaseClient
+        .from(window.SUPABASE_TABLE)
+        .insert([data]);
 
       if (error) {
         console.error("ERROR DE SUPABASE:", error);
@@ -146,7 +183,7 @@ if (form) {
         return;
       }
 
-      console.log("PEDIDO REGISTRADO:", pedido);
+      console.log("PEDIDO REGISTRADO CORRECTAMENTE");
 
       if (msg) {
         msg.textContent =
@@ -164,7 +201,6 @@ if (form) {
       }, 2200);
 
     } catch (err) {
-
       console.error("ERROR COMPLETO:", err);
 
       if (msg) {
