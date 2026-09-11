@@ -1,1 +1,711 @@
-:root{--orange:#ff7a00;--orange2:#ff9d22;--black:#080808;--card:#121212;--line:#292929;--white:#fff;--muted:#b9b9b9}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--white);font-family:Montserrat,Arial,sans-serif}.topbar{background:var(--orange);color:#090909;text-align:center;font-weight:900;padding:11px 14px;font-size:13px}.header{padding:18px 20px;text-align:center;border-bottom:1px solid #1c1c1c;background:#090909}.header img{width:92px;height:92px;object-fit:contain}.product-wrap{max-width:1180px;margin:auto;padding:28px 20px 50px;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:start}.gallery{min-width:0}.main-photo{width:100%;padding:0;border:1px solid #262626;border-radius:18px;overflow:hidden;background:#111;position:relative;cursor:zoom-in;display:block}.main-photo img{width:100%;display:block;max-height:720px;object-fit:contain}.zoom{position:absolute;right:14px;top:14px;background:rgba(0,0,0,.75);border:1px solid #444;border-radius:50%;width:42px;height:42px;display:grid;place-items:center;font-size:24px}.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.thumb{padding:3px;border:2px solid #2c2c2c;background:#111;border-radius:11px;overflow:hidden;cursor:pointer}.thumb.active{border-color:var(--orange)}.thumb img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:7px}.details{padding-top:12px}.pill,.section-label{display:inline-block;color:var(--orange);font-size:12px;font-weight:900;letter-spacing:1.5px}.details h1{font-size:44px;line-height:1.04;margin:12px 0}.headline{color:#ddd;font-size:19px;line-height:1.5;margin:0 0 22px}.price{display:flex;align-items:baseline;gap:8px}.price strong{font-size:46px;color:var(--orange);font-weight:900}.price span{color:#aaa;font-weight:700}.before{font-size:18px;color:#aaa;margin-top:3px}.before s,.offer-before s{color:#aaa}.saving{display:inline-block;background:#1e1e1e;color:var(--orange);border:1px solid #343434;border-radius:999px;padding:8px 12px;margin:16px 0;font-size:12px;font-weight:900}.actions{display:grid;gap:11px;margin-top:8px}.btn{display:flex;align-items:center;justify-content:center;min-height:54px;padding:14px 18px;border-radius:10px;text-decoration:none;font-weight:900;letter-spacing:.3px;border:0;cursor:pointer;font-family:inherit}.orange{background:var(--orange);color:#090909}.orange:hover{background:var(--orange2)}.whatsapp{background:#1d1d1d;color:#fff;border:1px solid #444}.trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.trust span{border:1px solid #2e2e2e;background:#111;padding:10px 12px;border-radius:9px;font-size:12px;color:#ddd}.fine{font-size:11px;color:#777;line-height:1.5}.description,.benefits,.how,.offer,.order{max-width:1050px;margin:0 auto;padding:70px 20px}.description{border-top:1px solid #1d1d1d}.description h2,.benefits h2,.how h2,.offer h2,.order h2{font-size:34px;line-height:1.15;margin:12px 0 18px}.description p{color:#c8c8c8;line-height:1.75;font-size:16px;max-width:850px}.benefits{border-top:1px solid #1d1d1d}.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.benefit-grid article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}.icon{font-size:30px;margin-bottom:10px}.benefit-grid h3{font-size:17px;margin:0 0 8px}.benefit-grid p{color:#aaa;font-size:13px;line-height:1.6;margin:0}.how{border-top:1px solid #1d1d1d}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.steps div{background:#111;border:1px solid #292929;border-radius:14px;padding:20px;display:flex;gap:15px;align-items:center}.steps b{color:var(--orange);font-size:22px}.steps span{color:#ddd;font-size:14px;line-height:1.5}.offer{border:1px solid #343434;background:linear-gradient(145deg,#161616,#0d0d0d);border-radius:20px;text-align:center;margin-bottom:20px}.offer-price{font-size:56px;color:var(--orange);font-weight:900}.offer-price small{font-size:15px;color:#aaa}.offer-before{color:#aaa;font-size:18px;margin:5px 0 22px}.offer p{color:#aaa;font-size:13px}.order{padding-top:35px}.order-card{background:#111;border:1px solid #2c2c2c;border-radius:20px;padding:28px}.sub{color:#aaa;line-height:1.6}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:22px}label{font-size:12px;font-weight:700;color:#ddd}input,select,textarea{display:block;width:100%;margin-top:7px;background:#080808;border:1px solid #333;border-radius:9px;color:#fff;padding:14px;font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--orange)}.full{grid-column:1/-1}.payment{margin:18px 0;background:#191919;border:1px solid #303030;border-radius:10px;padding:13px 15px;display:flex;justify-content:space-between;gap:10px}.payment span{color:#999;font-size:12px}.submit{width:100%}#formMessage{min-height:25px;text-align:center;margin-top:12px;font-size:13px;color:var(--orange)}footer{border-top:1px solid #222;padding:30px 20px;display:flex;justify-content:center;align-items:center;gap:14px;color:#aaa}footer img{width:62px;height:62px;object-fit:contain}footer div{display:flex;flex-direction:column;gap:5px}footer strong{color:#fff}footer small{font-size:11px}.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.lightbox.show{display:flex}.lightbox img{max-width:96vw;max-height:92vh;object-fit:contain}.lightbox button{position:absolute;right:18px;top:15px;border:0;background:#222;color:#fff;border-radius:50%;width:45px;height:45px;font-size:32px;cursor:pointer}@media(max-width:850px){.product-wrap{grid-template-columns:1fr;gap:25px}.details h1{font-size:34px}.price strong{font-size:40px}.benefit-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.description,.benefits,.how,.offer,.order{padding-top:50px;padding-bottom:50px}}@media(max-width:560px){.header img{width:78px;height:78px}.product-wrap{padding:16px 12px 35px}.thumbs{gap:6px}.details h1{font-size:30px}.headline{font-size:16px}.price strong{font-size:37px}.description h2,.benefits h2,.how h2,.offer h2,.order h2{font-size:27px}.benefit-grid,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.payment{flex-direction:column}.topbar{font-size:11px;padding:9px 7px}}
+:root{
+  --orange:#ff7a00;
+  --orange2:#ff9d22;
+  --black:#080808;
+  --card:#121212;
+  --line:#292929;
+  --white:#fff;
+  --muted:#b9b9b9
+}
+
+{
+  box-sizing:border-box
+}
+
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  margin:0;
+  background:var(--black);
+  color:var(--white);
+  font-family:Montserrat,Arial,sans-serif
+}
+
+
+/ ===============================
+   BARRA SUPERIOR
+================================ /
+
+.topbar{
+  background:var(--orange);
+  color:#090909;
+  text-align:center;
+  font-weight:900;
+  padding:11px 14px;
+  font-size:13px
+}
+
+
+/ ===============================
+   HEADER
+================================ /
+
+.header{
+  padding:18px 20px;
+  text-align:center;
+  border-bottom:1px solid #1c1c1c;
+  background:#090909
+}
+
+.header img{
+  width:92px;
+  height:92px;
+  object-fit:contain
+}
+
+
+/ ===============================
+   PRODUCTO
+================================ /
+
+.product-wrap{
+  max-width:1180px;
+  margin:auto;
+  padding:28px 20px 50px;
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:44px;
+  align-items:start
+}
+
+.gallery{
+  min-width:0
+}
+
+.main-photo{
+  width:100%;
+  padding:0;
+  border:1px solid #262626;
+  border-radius:18px;
+  overflow:hidden;
+  background:#111;
+  position:relative;
+  cursor:zoom-in;
+  display:block
+}
+
+.main-photo img{
+  width:100%;
+  display:block;
+  max-height:720px;
+  object-fit:contain
+}
+
+.zoom{
+  position:absolute;
+  right:14px;
+  top:14px;
+  background:rgba(0,0,0,.75);
+  border:1px solid #444;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  font-size:24px
+}
+
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:12px
+}
+
+.thumb{
+  padding:3px;
+  border:2px solid #2c2c2c;
+  background:#111;
+  border-radius:11px;
+  overflow:hidden;
+  cursor:pointer
+}
+
+.thumb.active{
+  border-color:var(--orange)
+}
+
+.thumb img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  border-radius:7px
+}
+
+
+/ ===============================
+   INFORMACIÓN
+================================ /
+
+.details{
+  padding-top:12px
+}
+
+.pill,
+.section-label{
+  display:inline-block;
+  color:var(--orange);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.5px
+}
+
+.details h1{
+  font-size:44px;
+  line-height:1.04;
+  margin:12px 0
+}
+
+.headline{
+  color:#ddd;
+  font-size:19px;
+  line-height:1.5;
+  margin:0 0 22px
+}
+
+.price{
+  display:flex;
+  align-items:baseline;
+  gap:8px
+}
+
+.price strong{
+  font-size:46px;
+  color:var(--orange);
+  font-weight:900
+}
+
+.price span{
+  color:#aaa;
+  font-weight:700
+}
+
+.before{
+  font-size:18px;
+  color:#aaa;
+  margin-top:3px
+}
+
+.before s,
+.offer-before s{
+  color:#aaa
+}
+
+.saving{
+  display:inline-block;
+  background:#1e1e1e;
+  color:var(--orange);
+  border:1px solid #343434;
+  border-radius:999px;
+  padding:8px 12px;
+  margin:16px 0;
+  font-size:12px;
+  font-weight:900
+}
+
+
+/ ===============================
+   BOTONES
+================================ /
+
+.actions{
+  display:grid;
+  gap:11px;
+  margin-top:8px
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:14px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:.3px;
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+  text-align:center
+}
+
+.orange{
+  background:var(--orange);
+  color:#090909
+}
+
+.orange:hover{
+  background:var(--orange2)
+}
+
+.whatsapp{
+  background:#1d1d1d;
+  color:#fff;
+  border:1px solid #444
+}
+
+
+/ ===============================
+   CONFIANZA
+================================ /
+
+.trust{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px
+}
+
+.trust span{
+  border:1px solid #2e2e2e;
+  background:#111;
+  padding:10px 12px;
+  border-radius:9px;
+  font-size:12px;
+  color:#ddd
+}
+
+.fine{
+  font-size:11px;
+  color:#777;
+  line-height:1.5
+}
+
+
+/ ===============================
+   SECCIONES
+================================ /
+
+.description,
+.benefits,
+.how,
+.offer,
+.order{
+  max-width:1050px;
+  margin:0 auto;
+  padding:70px 20px
+}
+
+.description{
+  border-top:1px solid #1d1d1d
+}
+
+.description h2,
+.benefits h2,
+.how h2,
+.offer h2,
+.order h2{
+  font-size:34px;
+  line-height:1.15;
+  margin:12px 0 18px
+}
+
+.description p{
+  color:#c8c8c8;
+  line-height:1.75;
+  font-size:16px;
+  max-width:850px
+}
+
+
+/ ===============================
+   BENEFICIOS
+================================ /
+
+.benefits{
+  border-top:1px solid #1d1d1d
+}
+
+.benefit-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+
+.benefit-grid article{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:22px
+}
+
+.icon{
+  font-size:30px;
+  margin-bottom:10px
+}
+
+.benefit-grid h3{
+  font-size:17px;
+  margin:0 0 8px
+}
+
+.benefit-grid p{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.6;
+  margin:0
+}
+
+
+/ ===============================
+   PASOS
+================================ /
+
+.how{
+  border-top:1px solid #1d1d1d
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
+}
+
+.steps div{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:14px;
+  padding:20px;
+  display:flex;
+  gap:15px;
+  align-items:center
+}
+
+.steps b{
+  color:var(--orange);
+  font-size:22px
+}
+
+.steps span{
+  color:#ddd;
+  font-size:14px;
+  line-height:1.5
+}
+
+
+/ ===============================
+   OFERTA
+================================ /
+
+.offer{
+  border:1px solid #343434;
+  background:linear-gradient(145deg,#161616,#0d0d0d);
+  border-radius:20px;
+  text-align:center;
+  margin-bottom:20px
+}
+
+.offer-price{
+  font-size:56px;
+  color:var(--orange);
+  font-weight:900
+}
+
+.offer-price small{
+  font-size:15px;
+  color:#aaa
+}
+
+.offer-before{
+  color:#aaa;
+  font-size:18px;
+  margin:5px 0 22px
+}
+
+.offer p{
+  color:#aaa;
+  font-size:13px
+}
+
+
+/ ===============================
+   FORMULARIO
+================================ /
+
+.order{
+  padding-top:35px
+}
+
+.order-card{
+  background:#111;
+  border:1px solid #2c2c2c;
+  border-radius:20px;
+  padding:28px
+}
+
+.sub{
+  color:#aaa;
+  line-height:1.6
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:22px
+}
+
+label{
+  font-size:12px;
+  font-weight:700;
+  color:#ddd
+}
+
+input,
+select,
+textarea{
+  display:block;
+  width:100%;
+  margin-top:7px;
+  background:#080808;
+  border:1px solid #333;
+  border-radius:9px;
+  color:#fff;
+  padding:14px;
+  font:inherit;
+  outline:none
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--orange)
+}
+
+.full{
+  grid-column:1/-1
+}
+
+.payment{
+  margin:18px 0;
+  background:#191919;
+  border:1px solid #303030;
+  border-radius:10px;
+  padding:13px 15px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px
+}
+
+.payment span{
+  color:#999;
+  font-size:12px
+}
+
+.submit{
+  width:100%
+}
+
+#formMessage{
+  min-height:25px;
+  text-align:center;
+  margin-top:12px;
+  font-size:13px;
+  color:var(--orange)
+}
+
+
+/ ===============================
+   FOOTER
+================================ /
+
+footer{
+  border-top:1px solid #222;
+  padding:38px 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#aaa
+}
+
+.footer-brand{
+  display:flex;
+  flex-direction:column;
+  gap:7px
+}
+
+.footer-brand strong{
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:1px;
+  animation:brandReveal 1.4s ease-out both
+}
+
+.footer-brand small{
+  font-size:11px;
+  color:#777
+}
+
+
+/ ===============================
+   ANIMACIÓN IMPORTADORA
+================================ /
+
+@keyframes brandReveal{
+
+  0%{
+    opacity:0;
+    transform:translateY(12px);
+    letter-spacing:6px
+  }
+
+  60%{
+    opacity:1
+  }
+
+  100%{
+    opacity:1;
+    transform:translateY(0);
+    letter-spacing:1px
+  }
+
+}
+
+
+/ ===============================
+   LIGHTBOX
+================================ /
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.94);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+  padding:20px
+}
+
+.lightbox.show{
+  display:flex
+}
+
+.lightbox img{
+  max-width:96vw;
+  max-height:92vh;
+  object-fit:contain
+}
+
+.lightbox button{
+  position:absolute;
+  right:18px;
+  top:15px;
+  border:0;
+  background:#222;
+  color:#fff;
+  border-radius:50%;
+  width:45px;
+  height:45px;
+  font-size:32px;
+  cursor:pointer
+}
+
+
+/ ===============================
+   TABLET
+================================ /
+
+@media(max-width:850px){
+
+  .product-wrap{
+    grid-template-columns:1fr;
+    gap:25px
+  }
+
+  .details h1{
+    font-size:34px
+  }
+
+  .price strong{
+    font-size:40px
+  }
+
+  .benefit-grid{
+    grid-template-columns:1fr 1fr
+  }
+
+  .steps{
+    grid-template-columns:1fr
+  }
+
+  .description,
+  .benefits,
+  .how,
+  .offer,
+  .order{
+    padding-top:50px;
+    padding-bottom:50px
+  }
+
+}
+
+
+/ ===============================
+   CELULAR
+================================ */
+
+@media(max-width:560px){
+
+  .header img{
+    width:78px;
+    height:78px
+  }
+
+  .product-wrap{
+    padding:16px 12px 35px
+  }
+
+  .thumbs{
+    gap:6px
+  }
+
+  .details h1{
+    font-size:30px
+  }
+
+  .headline{
+    font-size:16px
+  }
+
+  .price strong{
+    font-size:37px
+  }
+
+  .description h2,
+  .benefits h2,
+  .how h2,
+  .offer h2,
+  .order h2{
+    font-size:27px
+  }
+
+  .benefit-grid,
+  .form-grid{
+    grid-template-columns:1fr
+  }
+
+  .full{
+    grid-column:auto
+  }
+
+  .payment{
+    flex-direction:column
+  }
+
+  .topbar{
+    font-size:11px;
+    padding:9px 7px
+  }
+
+  .footer-brand strong{
+    font-size:19px
+  }
+
+}
