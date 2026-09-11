@@ -62,7 +62,6 @@ form.addEventListener("submit", async e => {
 
   e.preventDefault();
 
-  msg.style.color = "";
   msg.textContent = "Registrando pedido...";
 
   const raw = Object.fromEntries(
@@ -77,6 +76,10 @@ form.addEventListener("submit", async e => {
   const cantidad = Number(raw.cantidad || 1);
   const observaciones = (raw.observaciones || "").trim();
 
+  // Datos que se enviarán a Supabase.
+  // IMPORTANTE: NO enviamos "total" porque Supabase
+  // lo calcula automáticamente.
+
   const data = {
     nombre: nombre,
     telefono: telefono,
@@ -86,42 +89,33 @@ form.addEventListener("submit", async e => {
     producto: "Localizador para Mascotas",
     cantidad: cantidad,
     precio_unitario: PRICE,
-    total: PRICE * cantidad,
     observaciones: observaciones,
     estado: "Pendiente"
   };
 
-  console.log("DATOS QUE SE ENVIARÁN A SUPABASE:");
-  console.log(data);
+  console.log("DATOS ENVIADOS A SUPABASE:", data);
 
   try {
 
-    const resultado = await window.supabaseClient
-      .from(window.SUPABASE_TABLE)
-      .insert([data])
-      .select();
+    const { data: pedido, error } =
+      await window.supabaseClient
+        .from(window.SUPABASE_TABLE)
+        .insert([data])
+        .select();
 
-    console.log("RESPUESTA COMPLETA DE SUPABASE:");
-    console.log(resultado);
-
-    if (resultado.error) {
-
-      console.error("ERROR DE SUPABASE:");
-      console.error(resultado.error);
+    if (error) {
+      console.error("ERROR DE SUPABASE:", error);
 
       msg.innerHTML = `
         <strong>⚠️ ERROR DE SUPABASE</strong><br><br>
-        ${resultado.error.message || "Error desconocido"}<br><br>
-        <small>
-        Código: ${resultado.error.code || "No disponible"}
-        </small>
+        ${error.message}<br><br>
+        <small>Código: ${error.code || "No disponible"}</small>
       `;
 
       return;
     }
 
-    console.log("PEDIDO REGISTRADO CORRECTAMENTE:");
-    console.log(resultado.data);
+    console.log("PEDIDO REGISTRADO:", pedido);
 
     msg.textContent =
       "¡Pedido registrado correctamente! Te contactaremos para confirmar. 🐾";
@@ -130,8 +124,7 @@ form.addEventListener("submit", async e => {
 
   } catch (err) {
 
-    console.error("ERROR COMPLETO:");
-    console.error(err);
+    console.error("ERROR COMPLETO:", err);
 
     msg.innerHTML = `
       <strong>⚠️ ERROR</strong><br><br>
