@@ -2,63 +2,68 @@ const PRICE = 79900;
 const WA_NUMBER = "573147636825";
 
 // ===============================
-// GALERÍA DE IMÁGENES
+// GALERÍA
 // ===============================
 
 const mainPhoto = document.getElementById("mainPhoto");
-const thumbnails = document.querySelectorAll(".thumb");
+const thumbs = [...document.querySelectorAll(".thumb")];
 
-thumbnails.forEach(thumb => {
+thumbs.forEach(t => {
+  t.addEventListener("click", () => {
+    thumbs.forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    mainPhoto.src = t.dataset.src;
+thumbs.forEach((thumb) => {
   thumb.addEventListener("click", () => {
-    const src = thumb.dataset.src;
-
-    if (mainPhoto && src) {
-      mainPhoto.src = src;
-    }
-
-    thumbnails.forEach(item => {
-      item.classList.remove("active");
-    });
-
+    thumbs.forEach((item) => item.classList.remove("active"));
     thumb.classList.add("active");
+    mainPhoto.src = thumb.dataset.src;
   });
 });
 
-
-// ===============================
-// GALERÍA AMPLIADA / LIGHTBOX
-// ===============================
-
-const openGallery = document.getElementById("openGallery");
 const lightbox = document.getElementById("lightbox");
 const zoomPhoto = document.getElementById("zoomPhoto");
+const openGallery = document.getElementById("openGallery");
 const closeGallery = document.getElementById("closeGallery");
 
-if (openGallery && lightbox && zoomPhoto && mainPhoto) {
+if (openGallery) {
   openGallery.addEventListener("click", () => {
     zoomPhoto.src = mainPhoto.src;
-    lightbox.classList.add("active");
+    lightbox.classList.add("show");
     lightbox.setAttribute("aria-hidden", "false");
   });
 }
 
-function closeLightbox() {
-  if (lightbox) {
-    lightbox.classList.remove("active");
-    lightbox.setAttribute("aria-hidden", "true");
-  }
-}
+document.getElementById("openGallery").addEventListener("click", () => {
+  zoomPhoto.src = mainPhoto.src;
+  lightbox.classList.add("show");
+  lightbox.setAttribute("aria-hidden", "false");
+});
 
+document.getElementById("closeGallery").addEventListener(
+  "click",
+  closeLightbox
+);
 if (closeGallery) {
   closeGallery.addEventListener("click", closeLightbox);
 }
 
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+});
 if (lightbox) {
-  lightbox.addEventListener("click", e => {
-    if (e.target === lightbox) {
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
       closeLightbox();
     }
   });
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("show");
+  lightbox.setAttribute("aria-hidden", "true");
 }
 
 
@@ -66,71 +71,113 @@ if (lightbox) {
 // WHATSAPP
 // ===============================
 
+const waText = encodeURIComponent(
+  "Hola, estoy interesado(a) en el Localizador para Mascotas de $79.900. Quiero hacer un pedido."
+  "Hola, estoy interesado(a) en el Localizador para Mascotas AirTag Pet de $79.900. Quiero hacer un pedido."
+);
+
+document.getElementById("waTop").href =
+  `https://wa.me/${WA_NUMBER}?text=${waText}`;
 const waTop = document.getElementById("waTop");
 
 if (waTop) {
-  const message = encodeURIComponent(
-    "Hola, estoy interesado en el Localizador para Mascotas AirTag Pet."
-  );
-
-  waTop.href = `https://wa.me/${WA_NUMBER}?text=${message}`;
+  waTop.href = `https://wa.me/${WA_NUMBER}?text=${waText}`;
 }
-
 
 // ===============================
-// MODAL DE PEDIDO
-// ===============================
-
-const orderModal = document.getElementById("orderModal");
-const openOrderButtons = document.querySelectorAll(".order-trigger");
-const closeOrderButton = document.getElementById("closeOrder");
-const orderOverlay = document.getElementById("orderOverlay");
-
-function openOrderModal(e) {
-  if (e) {
-    e.preventDefault();
-  }
-
-  if (orderModal) {
-    orderModal.classList.add("active");
-    orderModal.setAttribute("aria-hidden", "false");
-  }
-}
-
-function closeOrderModal() {
-  if (orderModal) {
-    orderModal.classList.remove("active");
-    orderModal.setAttribute("aria-hidden", "true");
-  }
-}
-
-openOrderButtons.forEach(button => {
-  button.addEventListener("click", openOrderModal);
-});
-
-if (closeOrderButton) {
-  closeOrderButton.addEventListener("click", closeOrderModal);
-}
-
-if (orderOverlay) {
-  orderOverlay.addEventListener("click", closeOrderModal);
-}
-
-
-// ===============================
-// FORMULARIO DE PEDIDO
+// FORMULARIO
+// VENTANA DEL FORMULARIO
 // ===============================
 
 const form = document.getElementById("orderForm");
 const msg = document.getElementById("formMessage");
+const orderModal = document.getElementById("orderModal");
+const orderOverlay = document.getElementById("orderOverlay");
+const closeOrder = document.getElementById("closeOrder");
 
+form.addEventListener("submit", async e => {
+const orderButtons = document.querySelectorAll(".order-trigger");
+
+  e.preventDefault();
+function openOrderModal() {
+  if (!orderModal) return;
+
+  msg.textContent = "Registrando pedido...";
+  orderModal.classList.add("show");
+  orderModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeOrderModal() {
+  if (!orderModal) return;
+
+  const raw = Object.fromEntries(
+    new FormData(form).entries()
+  );
+  orderModal.classList.remove("show");
+  orderModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+  const nombre = (raw.nombre || "").trim();
+  const telefono = (raw.telefono || "").trim();
+  const ciudad = (raw.ciudad || "").trim();
+  const barrio = (raw.barrio || "").trim();
+  const direccion = (raw.direccion || "").trim();
+  const cantidad = Number(raw.cantidad || 1);
+  const observaciones = (raw.observaciones || "").trim();
+orderButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    openOrderModal();
+  });
+});
+
+  const data = {
+    nombre: nombre,
+    telefono: telefono,
+    ciudad: ciudad,
+    direccion: direccion,
+    barrio: barrio,
+    producto: "Localizador para Mascotas",
+    cantidad: cantidad,
+    precio_unitario: PRICE,
+    observaciones: observaciones,
+    estado: "Pendiente"
+  };
+if (closeOrder) {
+  closeOrder.addEventListener("click", closeOrderModal);
+}
+
+  console.log("DATOS ENVIADOS A SUPABASE:", data);
+if (orderOverlay) {
+  orderOverlay.addEventListener("click", closeOrderModal);
+}
+
+  try {
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeOrderModal();
+  }
+});
+
+    const { error } = await window.supabaseClient
+      .from(window.SUPABASE_TABLE)
+      .insert([data]);
+// ===============================
+// FORMULARIO
+// ===============================
+
+    if (error) {
+const form = document.getElementById("orderForm");
+const msg = document.getElementById("formMessage");
+
+      console.error("ERROR DE SUPABASE:", error);
 if (form) {
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-    if (msg) {
-      msg.textContent = "Registrando pedido...";
-    }
+    msg.textContent = "Registrando pedido...";
 
     const raw = Object.fromEntries(
       new FormData(form).entries()
@@ -153,7 +200,6 @@ if (form) {
       producto: "Localizador para Mascotas AirTag Pet",
       cantidad: cantidad,
       precio_unitario: PRICE,
-      total: PRICE * cantidad,
       observaciones: observaciones,
       estado: "Pendiente"
     };
@@ -161,55 +207,72 @@ if (form) {
     console.log("DATOS ENVIADOS A SUPABASE:", data);
 
     try {
-      const { error } = await window.supabaseClient
-        .from(window.SUPABASE_TABLE)
-        .insert([data]);
+      const { data: pedido, error } =
+        await window.supabaseClient
+          .from(window.SUPABASE_TABLE)
+          .insert([data])
+          .select();
 
       if (error) {
         console.error("ERROR DE SUPABASE:", error);
 
-        if (msg) {
-          msg.innerHTML = `
-            <strong>⚠️ ERROR DE SUPABASE</strong>
-            <br><br>
-            ${error.message}
-            <br><br>
-            <small>
-              Código: ${error.code || "No disponible"}
-            </small>
-          `;
-        }
+        msg.innerHTML = `
+          <strong>⚠️ ERROR DE SUPABASE</strong>
+          <br><br>
+          ${error.message}
+          <br><br>
+          <small>
+            Código: ${error.code || "No disponible"}
+          </small>
+        `;
 
         return;
       }
 
-      console.log("PEDIDO REGISTRADO CORRECTAMENTE");
+      console.log("PEDIDO REGISTRADO:", pedido);
 
-      if (msg) {
-        msg.textContent =
-          "¡Pedido registrado correctamente! Te contactaremos para confirmar. 🐾";
-      }
+      msg.textContent =
+        "¡Pedido registrado correctamente! Te contactaremos para confirmar. 🐾";
 
       form.reset();
 
       setTimeout(() => {
         closeOrderModal();
-
-        if (msg) {
-          msg.textContent = "";
-        }
+        msg.textContent = "";
       }, 2200);
 
-    } catch (err) {
-      console.error("ERROR COMPLETO:", err);
+    } catch (error) {
+      console.error("ERROR COMPLETO:", error);
 
-      if (msg) {
-        msg.innerHTML = `
-          <strong>⚠️ ERROR</strong>
-          <br><br>
-          ${err.message || err}
-        `;
-      }
+      msg.innerHTML = `
+        <strong>⚠️ ERROR DE SUPABASE</strong><br><br>
+        ${error.message}<br><br>
+        <small>Código: ${error.code || "No disponible"}</small>
+        <strong>⚠️ ERROR</strong>
+        <br><br>
+        ${error.message || error}
+      `;
+
+      return;
     }
+
+    console.log("PEDIDO REGISTRADO CORRECTAMENTE");
+
+    msg.textContent =
+      "¡Pedido registrado correctamente! Te contactaremos para confirmar. 🐾";
+
+    form.reset();
+
+  } catch (err) {
+
+    console.error("ERROR COMPLETO:", err);
+
+    msg.innerHTML = `
+      <strong>⚠️ ERROR</strong><br><br>
+      ${err.message || err}
+    `;
+  }
+
+});
   });
 }
