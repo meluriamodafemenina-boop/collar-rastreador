@@ -8,7 +8,7 @@
   --muted:#b9b9b9;
 }
 
-{
+*{
   box-sizing:border-box;
 }
 
@@ -27,10 +27,6 @@ body.modal-open{
   overflow:hidden;
 }
 
-/ ===============================
-   BARRA SUPERIOR
-================================ /
-
 .topbar{
   background:var(--orange);
   color:#090909;
@@ -40,64 +36,20 @@ body.modal-open{
   font-size:13px;
 }
 
-/ ===============================
-   MARCA
-================================ /
-
-.brand-header{
-  padding:25px 20px 22px;
+.header{
+  padding:22px 20px;
   text-align:center;
   border-bottom:1px solid #1c1c1c;
   background:#090909;
-  overflow:hidden;
 }
 
-.brand-name{
+.brand-title{
+  color:#fff;
   font-size:28px;
   font-weight:900;
-  letter-spacing:2px;
-  color:#fff;
-  animation:brandEnter .9s ease-out both;
+  letter-spacing:1.5px;
+  line-height:1.1;
 }
-
-.brand-name::after{
-  content:"";
-  display:block;
-  width:55px;
-  height:3px;
-  background:var(--orange);
-  border-radius:10px;
-  margin:10px auto 0;
-  animation:lineEnter 1s ease-out .25s both;
-}
-
-@keyframes brandEnter{
-  from{
-    opacity:0;
-    transform:translateY(-15px);
-    letter-spacing:7px;
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-    letter-spacing:2px;
-  }
-}
-
-@keyframes lineEnter{
-  from{
-    opacity:0;
-    width:0;
-  }
-  to{
-    opacity:1;
-    width:55px;
-  }
-}
-
-/ ===============================
-   PRODUCTO
-================================ /
 
 .product-wrap{
   max-width:1180px;
@@ -174,10 +126,6 @@ body.modal-open{
   border-radius:7px;
 }
 
-/ ===============================
-   DETALLES
-================================ /
-
 .details{
   padding-top:12px;
 }
@@ -244,10 +192,6 @@ body.modal-open{
   font-weight:900;
 }
 
-/ ===============================
-   BOTONES
-================================ /
-
 .actions{
   display:grid;
   gap:11px;
@@ -267,6 +211,7 @@ body.modal-open{
   border:0;
   cursor:pointer;
   font-family:inherit;
+  text-align:center;
 }
 
 .orange{
@@ -283,10 +228,6 @@ body.modal-open{
   color:#fff;
   border:1px solid #444;
 }
-
-/ ===============================
-   CONFIANZA
-================================ /
 
 .trust{
   display:flex;
@@ -309,10 +250,6 @@ body.modal-open{
   color:#777;
   line-height:1.5;
 }
-
-/ ===============================
-   SECCIONES
-================================ /
 
 .description,
 .benefits,
@@ -342,10 +279,6 @@ body.modal-open{
   font-size:16px;
   max-width:850px;
 }
-
-/ ===============================
-   BENEFICIOS
-================================ /
 
 .benefits{
   border-top:1px solid #1d1d1d;
@@ -381,10 +314,6 @@ body.modal-open{
   margin:0;
 }
 
-/ ===============================
-   COMO FUNCIONA
-================================ /
-
 .how{
   border-top:1px solid #1d1d1d;
 }
@@ -416,10 +345,6 @@ body.modal-open{
   line-height:1.5;
 }
 
-/ ===============================
-   OFERTA
-================================ /
-
 .offer{
   border:1px solid #343434;
   background:linear-gradient(145deg,#161616,#0d0d0d);
@@ -450,85 +375,71 @@ body.modal-open{
   font-size:13px;
 }
 
-/ ===============================
-   FORMULARIO EN VENTANA
-================================ /
+
+/* =========================================
+   VENTANA DEL FORMULARIO
+========================================= */
 
 .order-modal{
   position:fixed;
   inset:0;
   z-index:100;
   display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
 }
 
 .order-modal.show{
   display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
 .order-overlay{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.82);
-  backdrop-filter:blur(5px);
+  backdrop-filter:blur(4px);
 }
 
 .order-modal-card{
   position:relative;
   z-index:2;
-  width:min(650px,100%);
+  width:100%;
+  max-width:620px;
   max-height:92vh;
   overflow-y:auto;
   background:#111;
-  border:1px solid #363636;
+  border:1px solid #333;
   border-radius:20px;
-  padding:30px;
-  box-shadow:0 20px 70px rgba(0,0,0,.7);
-  animation:modalEnter .25s ease-out both;
-}
-
-@keyframes modalEnter{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+  padding:28px;
+  box-shadow:0 20px 80px rgba(0,0,0,.7);
 }
 
 .order-close{
   position:absolute;
   right:15px;
-  top:15px;
-  width:40px;
-  height:40px;
+  top:13px;
+  width:42px;
+  height:42px;
   border:1px solid #444;
+  border-radius:50%;
   background:#222;
   color:#fff;
-  border-radius:50%;
-  font-size:27px;
+  font-size:29px;
   line-height:1;
   cursor:pointer;
-}
-
-.order-close:hover{
-  background:#333;
 }
 
 .order-modal-card h2{
   font-size:30px;
   line-height:1.15;
-  margin:12px 45px 10px 0;
+  margin:12px 45px 12px 0;
 }
 
 .sub{
   color:#aaa;
   line-height:1.6;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
 .form-grid{
@@ -597,9 +508,10 @@ textarea:focus{
   color:var(--orange);
 }
 
-/ ===============================
-   PIE DE PÁGINA
-================================ /
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer{
   border-top:1px solid #222;
@@ -610,7 +522,7 @@ footer{
   color:#aaa;
 }
 
-.footer-brand{
+footer div{
   display:flex;
   flex-direction:column;
   gap:5px;
@@ -625,9 +537,10 @@ footer small{
   font-size:11px;
 }
 
-/ ===============================
-   GALERÍA
-================================ /
+
+/* =========================================
+   GALERÍA AMPLIADA
+========================================= */
 
 .lightbox{
   position:fixed;
@@ -664,9 +577,10 @@ footer small{
   cursor:pointer;
 }
 
-/ ===============================
-   TABLET
-================================ /
+
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media(max-width:850px){
 
@@ -701,24 +615,10 @@ footer small{
 
 }
 
-/ ===============================
-   CELULAR
-================================ */
-
 @media(max-width:560px){
 
-  .topbar{
-    font-size:11px;
-    padding:9px 7px;
-  }
-
-  .brand-header{
-    padding:20px 12px;
-  }
-
-  .brand-name{
-    font-size:21px;
-    letter-spacing:1.3px;
+  .brand-title{
+    font-size:22px;
   }
 
   .product-wrap{
@@ -748,7 +648,10 @@ footer small{
     font-size:27px;
   }
 
-  .benefit-grid,
+  .benefit-grid{
+    grid-template-columns:1fr;
+  }
+
   .form-grid{
     grid-template-columns:1fr;
   }
@@ -761,27 +664,23 @@ footer small{
     flex-direction:column;
   }
 
-  .order-modal{
+  .topbar{
+    font-size:11px;
+    padding:9px 7px;
+  }
+
+  .order-modal.show{
     padding:10px;
   }
 
   .order-modal-card{
-    padding:24px 18px 20px;
-    border-radius:17px;
+    padding:22px 17px;
+    border-radius:16px;
     max-height:94vh;
   }
 
   .order-modal-card h2{
-    font-size:24px;
-    margin-right:35px;
-  }
-
-  .order-close{
-    width:36px;
-    height:36px;
-    right:12px;
-    top:12px;
-    font-size:24px;
+    font-size:25px;
   }
 
 }
