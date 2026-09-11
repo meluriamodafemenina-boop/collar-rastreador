@@ -20,8 +20,9 @@
   🐾 OFERTA ESPECIAL · $79.900 · ENVÍOS A TODA COLOMBIA
 </div>
 
-<header class="header">
-  <img src="assets/logo.png" alt="Importadora El Rebajón">
+<header class="brand-header">
+  <div class="brand-name">IMPORTADORA EL REBAJÓN</div>
+  <div class="brand-line"></div>
 </header>
 
 <main>
@@ -83,7 +84,7 @@
 
     <div class="actions">
 
-      <a class="btn orange" href="#pedido">
+      <a class="btn orange order-trigger" href="#pedido">
         HACER PEDIDO CONTRA ENTREGA
       </a>
 
@@ -99,7 +100,7 @@
     </div>
 
     <p class="fine">
-      Pago contra entrega sujeto a cobertura y condiciones del transportador.
+      *Pago contra entrega sujeto a cobertura y condiciones del transportador.
     </p>
 
   </div>
@@ -226,7 +227,7 @@
     Antes <s>$120.000</s>
   </div>
 
-  <a class="btn orange" href="#pedido">
+  <a class="btn orange order-trigger" href="#pedido">
     HACER PEDIDO CONTRA ENTREGA
   </a>
 
@@ -236,12 +237,43 @@
 
 </section>
 
+</main>
 
-<section class="order" id="pedido">
 
-  <div class="order-card">
+<footer>
 
-    <div class="section-label">HAZ TU PEDIDO</div>
+  <div class="footer-brand">
+
+    <strong>IMPORTADORA EL REBAJÓN</strong>
+
+    <small>
+      Precios bajos, grandes beneficios · ©️ 2026
+    </small>
+
+  </div>
+
+</footer>
+
+
+<!-- ===============================
+     VENTANA DEL FORMULARIO
+================================ -->
+
+<div class="order-modal" id="orderModal" aria-hidden="true">
+
+  <div class="order-overlay" id="orderOverlay"></div>
+
+  <div class="order-modal-card">
+
+    <button
+      class="order-close"
+      id="closeOrder"
+      type="button"
+      aria-label="Cerrar formulario">
+      ×
+    </button>
+
+    <div class="section-label">PEDIDO CONTRA ENTREGA</div>
 
     <h2>
       Recibe tu Localizador AirTag Pet en casa
@@ -302,19 +334,23 @@
 
         <label>
           Cantidad
+
           <select name="cantidad">
             <option value="1">1 unidad — $79.900</option>
             <option value="2">2 unidades — $159.800</option>
             <option value="3">3 unidades — $239.700</option>
           </select>
+
         </label>
 
         <label class="full">
           Observaciones
+
           <textarea
             name="observaciones"
             rows="3"
             placeholder="Información adicional (opcional)"></textarea>
+
         </label>
 
       </div>
@@ -334,25 +370,12 @@
 
   </div>
 
-</section>
-
-</main>
+</div>
 
 
-<footer>
-
-  <div class="footer-brand">
-
-    <strong>IMPORTADORA EL REBAJÓN</strong>
-
-    <small>
-      Precios bajos, grandes beneficios · ©️ 2026
-    </small>
-
-  </div>
-
-</footer>
-
+<!-- ===============================
+     GALERÍA AMPLIADA
+================================ -->
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
 
