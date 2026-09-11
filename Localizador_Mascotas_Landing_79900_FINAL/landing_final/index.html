@@ -22,7 +22,6 @@
 
 <header class="brand-header">
   <div class="brand-name">IMPORTADORA EL REBAJÓN</div>
-  <div class="brand-line"></div>
 </header>
 
 <main>
@@ -84,9 +83,9 @@
 
     <div class="actions">
 
-      <a class="btn orange order-trigger" href="#pedido">
+      <button class="btn orange order-trigger" type="button">
         HACER PEDIDO CONTRA ENTREGA
-      </a>
+      </button>
 
       <a class="btn whatsapp" id="waTop" target="_blank" rel="noopener">
         PEDIR POR WHATSAPP
@@ -227,9 +226,9 @@
     Antes <s>$120.000</s>
   </div>
 
-  <a class="btn orange order-trigger" href="#pedido">
+  <button class="btn orange order-trigger" type="button">
     HACER PEDIDO CONTRA ENTREGA
-  </a>
+  </button>
 
   <p>
     🚚 Envíos a toda Colombia · 💵 Pago contra entrega
@@ -255,9 +254,10 @@
 </footer>
 
 
-<!-- ===============================
-     VENTANA DEL FORMULARIO
-================================ -->
+<!-- ==========================================
+     FORMULARIO DE PEDIDO
+     OCULTO HASTA HACER CLIC
+========================================== -->
 
 <div class="order-modal" id="orderModal" aria-hidden="true">
 
@@ -269,11 +269,13 @@
       class="order-close"
       id="closeOrder"
       type="button"
-      aria-label="Cerrar formulario">
+      aria-label="Cerrar">
       ×
     </button>
 
-    <div class="section-label">PEDIDO CONTRA ENTREGA</div>
+    <div class="section-label">
+      PEDIDO CONTRA ENTREGA
+    </div>
 
     <h2>
       Recibe tu Localizador AirTag Pet en casa
@@ -302,9 +304,9 @@
           <input
             name="telefono"
             required
-            inputmode="tel"
+            inputmode="numeric"
             autocomplete="tel"
-            placeholder="300 000 0000">
+            placeholder="Ej: 3216108320">
         </label>
 
         <label>
@@ -360,7 +362,9 @@
         <span>Sujeto a cobertura del transportador.</span>
       </div>
 
-      <button class="btn orange submit" type="submit">
+      <button
+        class="btn orange submit"
+        type="submit">
         CONFIRMAR PEDIDO CONTRA ENTREGA
       </button>
 
@@ -373,17 +377,23 @@
 </div>
 
 
-<!-- ===============================
+<!-- ==========================================
      GALERÍA AMPLIADA
-================================ -->
+========================================== -->
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
 
-  <button id="closeGallery" type="button" aria-label="Cerrar">
+  <button
+    id="closeGallery"
+    type="button"
+    aria-label="Cerrar">
     ×
   </button>
 
-  <img id="zoomPhoto" src="" alt="Imagen ampliada">
+  <img
+    id="zoomPhoto"
+    src=""
+    alt="Imagen ampliada">
 
 </div>
 
