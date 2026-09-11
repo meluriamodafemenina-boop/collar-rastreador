@@ -25,7 +25,10 @@ document.getElementById("openGallery").addEventListener("click", () => {
   lightbox.setAttribute("aria-hidden", "false");
 });
 
-document.getElementById("closeGallery").addEventListener("click", closeLightbox);
+document.getElementById("closeGallery").addEventListener(
+  "click",
+  closeLightbox
+);
 
 lightbox.addEventListener("click", e => {
   if (e.target === lightbox) {
@@ -76,10 +79,6 @@ form.addEventListener("submit", async e => {
   const cantidad = Number(raw.cantidad || 1);
   const observaciones = (raw.observaciones || "").trim();
 
-  // Datos que se enviarán a Supabase.
-  // IMPORTANTE: NO enviamos "total" porque Supabase
-  // lo calcula automáticamente.
-
   const data = {
     nombre: nombre,
     telefono: telefono,
@@ -97,13 +96,12 @@ form.addEventListener("submit", async e => {
 
   try {
 
-    const { data: pedido, error } =
-      await window.supabaseClient
-        .from(window.SUPABASE_TABLE)
-        .insert([data])
-        .select();
+    const { error } = await window.supabaseClient
+      .from(window.SUPABASE_TABLE)
+      .insert([data]);
 
     if (error) {
+
       console.error("ERROR DE SUPABASE:", error);
 
       msg.innerHTML = `
@@ -115,7 +113,7 @@ form.addEventListener("submit", async e => {
       return;
     }
 
-    console.log("PEDIDO REGISTRADO:", pedido);
+    console.log("PEDIDO REGISTRADO CORRECTAMENTE");
 
     msg.textContent =
       "¡Pedido registrado correctamente! Te contactaremos para confirmar. 🐾";
